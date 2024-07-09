@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyMauiApp.DigitsPage"
              Title="DigitsPage">
+    <!-- VerticalStackLayout : 자식 요소를 수직으로 나타내고 있음 -->
     <VerticalStackLayout Spacing="15" Padding="20">
-        <Label Text = "Enter a Phoneword"
+        <!-- Label: 텍스트 표시 -->
+        <Label Text = "Enter a Phoneword" 
                FontSize ="20"/>
-        <Entry x:Name = "PhoneNumberText"
+        <!-- Entry: 텍스트 입력 필드 -->
+        <Entry x:Name = "PhoneNumberText" 
                Text = "1-555-NETMAUI" />
+        <!-- Button -->
         <Button x:Name = "TranslateButton"
                 Text = "Translate"
                 Clicked = "OnTranslate"/>

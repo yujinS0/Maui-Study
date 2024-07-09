@@ -25,6 +25,11 @@
         {
             await Shell.Current.GoToAsync(nameof(DigitsPage));
         }
+
+        private async void OnNavigateToOmokGamePage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(OmokGamePage));
+        }
     }
 
 }

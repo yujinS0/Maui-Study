@@ -33,6 +33,9 @@
             
             <Button Text="Go to Digits Page"
                 Clicked="OnNavigateToDigitsPage"/>
+
+            <Button Text="Omok Game Page"
+                Clicked="OnNavigateToOmokGamePage"/>
         </VerticalStackLayout>
     </ScrollView>
 
