@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.OmokGamePage"
+             Title="OmokGamePage">
+    <ScrollView>
+        <Grid Padding="10" RowSpacing="10" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Server Settings Section -->
+            <StackLayout Grid.Row="0" Grid.Column="0" Padding="10" Spacing="10">
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Socket Server 설정" FontAttributes="Bold"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="서버 주소:"/>
+                            <Entry x:Name="socketIPEntry" WidthRequest="150"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="포트 번호:"/>
+                            <Entry x:Name="socketPortEntry" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="checkBoxLocalHostIPSocket"/>
+                            <Label Text="localhost 사용"/>
+                        </HorizontalStackLayout>
+                        <Button Text="접속하기" Clicked="OnConnectClicked"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label Text="API Server 설정" FontAttributes="Bold"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="[Hive API] IP :"/>
+                            <Entry x:Name="hiveIPEntry" WidthRequest="150"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="포트 번호:"/>
+                            <Entry x:Name="hivePortEntry" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="checkBoxLocalHostIPHive"/>
+                            <Label Text="localhost 사용"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="[Game API] IP :"/>
+                            <Entry x:Name="gameIPEntry" WidthRequest="150"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="포트 번호:"/>
+                            <Entry x:Name="gamePortEntry" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="checkBoxLocalHostIPGame"/>
+                            <Label Text="localhost 사용"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!-- User Info and Actions -->
+            <StackLayout Grid.Row="0" Grid.Column="1" Padding="10" Spacing="10">
+                <Frame>
+                    <StackLayout>
+                        <Label Text="계정 정보" FontAttributes="Bold"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="UserID:"/>
+                            <Entry x:Name="userIDEntry" WidthRequest="200"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="PW:"/>
+                            <Entry x:Name="userPWEntry" IsPassword="True" WidthRequest="200"/>
+                        </HorizontalStackLayout>
+                        <Button Text="Register" Clicked="OnRegisterClicked"/>
+                        <Button Text="Login" Clicked="OnLoginClicked"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label Text="게임 정보" FontAttributes="Bold"/>
+                        <Label Text="UserID:"/>
+                        <Label x:Name="dataUserId"/>
+                        <Label Text="Exp:"/>
+                        <Label x:Name="dataExp"/>
+                        <Label Text="Level:"/>
+                        <Label x:Name="dataLevel"/>
+                        <Label Text="Win:"/>
+                        <Label x:Name="dataWin"/>
+                        <Label Text="Lose:"/>
+                        <Label x:Name="dataLose"/>
+                        <Label Text="Draw:"/>
+                        <Label x:Name="dataDraw"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!-- Room Info and Actions -->
+            <StackLayout Grid.Row="1" Grid.Column="0" Padding="10" Spacing="10">
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Room" FontAttributes="Bold"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Room Number:"/>
+                            <Entry x:Name="roomNumberEntry" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                        <Button Text="Enter" Clicked="OnRoomEnterClicked"/>
+                        <Button Text="Leave" Clicked="OnRoomLeaveClicked"/>
+                        <Button Text="Game Ready" Clicked="OnGameReadyClicked"/>
+                        <ListView x:Name="roomUserList" HeightRequest="150"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Entry x:Name="roomChatEntry" WidthRequest="200"/>
+                            <Button Text="Chat" Clicked="OnRoomChatClicked"/>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!-- Omok Board -->
+            <Frame Grid.Row="1" Grid.Column="1" Padding="10">
+                <GraphicsView 
+                    x:Name="gameCanvas"
+                    WidthRequest="600"
+                    HeightRequest="600"
+                    BackgroundColor="Burlywood">
+                    <GraphicsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCanvasTapped"/>
+                    </GraphicsView.GestureRecognizers>
+                </GraphicsView>
+            </Frame>
+
+            <!-- Log Section -->
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10" Spacing="10">
+                <Label Text="Logs" FontAttributes="Bold"/>
+                <ScrollView HeightRequest="200">
+                    <Label x:Name="logLabel" TextColor="Gray"/>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
